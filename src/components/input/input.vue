@@ -1,12 +1,12 @@
 <template>
     <div
-            v-show="type !== 'hidden'"
-            v-bind="containerAttrs"
-            :class="containerKls"
-            :style="containerStyle"
-            :role="containerRole"
-            @mouseenter="handleMouseEnter"
-            @mouseleave="handleMouseLeave"
+        v-show="type !== 'hidden'"
+        v-bind="containerAttrs"
+        :class="containerKls"
+        :style="containerStyle"
+        :role="containerRole"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
     >
         <!-- input -->
         <template v-if="type !== 'textarea'">
@@ -27,36 +27,36 @@
         </span>
 
                 <input
-                        :id="inputId"
-                        ref="input"
-                        :class="nsInput.e('inner')"
-                        v-bind="attrs"
-                        :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
-                        :disabled="inputDisabled"
-                        :formatter="formatter"
-                        :parser="parser"
-                        :readonly="readonly"
-                        :autocomplete="autocomplete"
-                        :tabindex="tabindex"
-                        :aria-label="label"
-                        :placeholder="placeholder"
-                        :style="inputStyle"
-                        :form="props.form"
-                        @compositionstart="handleCompositionStart"
-                        @compositionupdate="handleCompositionUpdate"
-                        @compositionend="handleCompositionEnd"
-                        @input="handleInput"
-                        @focus="handleFocus"
-                        @blur="handleBlur"
-                        @change="handleChange"
-                        @keydown="handleKeydown"
+                    :id="inputId"
+                    ref="input"
+                    :class="nsInput.e('inner')"
+                    v-bind="attrs"
+                    :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
+                    :disabled="inputDisabled"
+                    :formatter="formatter"
+                    :parser="parser"
+                    :readonly="readonly"
+                    :autocomplete="autocomplete"
+                    :tabindex="tabindex"
+                    :aria-label="label"
+                    :placeholder="placeholder"
+                    :style="inputStyle"
+                    :form="props.form"
+                    @compositionstart="handleCompositionStart"
+                    @compositionupdate="handleCompositionUpdate"
+                    @compositionend="handleCompositionEnd"
+                    @input="handleInput"
+                    @focus="handleFocus"
+                    @blur="handleBlur"
+                    @change="handleChange"
+                    @keydown="handleKeydown"
                 />
 
                 <!-- suffix slot -->
                 <span v-if="suffixVisible" :class="nsInput.e('suffix')">
           <span :class="nsInput.e('suffix-inner')">
             <template
-                    v-if="!showClear || !showPwdVisible || !isWordLimitVisible"
+                v-if="!showClear || !showPwdVisible || !isWordLimitVisible"
             >
               <slot name="suffix"/>
                 <!--              <el-icon v-if="suffixIcon" :class="nsInput.e('icon')">-->
@@ -106,31 +106,31 @@
         <!-- textarea -->
         <template v-else>
       <textarea
-              :id="inputId"
-              ref="textarea"
-              :class="nsTextarea.e('inner')"
-              v-bind="attrs"
-              :tabindex="tabindex"
-              :disabled="inputDisabled"
-              :readonly="readonly"
-              :autocomplete="autocomplete"
-              :style="textareaStyle"
-              :aria-label="label"
-              :placeholder="placeholder"
-              :form="props.form"
-              @compositionstart="handleCompositionStart"
-              @compositionupdate="handleCompositionUpdate"
-              @compositionend="handleCompositionEnd"
-              @input="handleInput"
-              @focus="handleFocus"
-              @blur="handleBlur"
-              @change="handleChange"
-              @keydown="handleKeydown"
+          :id="inputId"
+          ref="textarea"
+          :class="nsTextarea.e('inner')"
+          v-bind="attrs"
+          :tabindex="tabindex"
+          :disabled="inputDisabled"
+          :readonly="readonly"
+          :autocomplete="autocomplete"
+          :style="textareaStyle"
+          :aria-label="label"
+          :placeholder="placeholder"
+          :form="props.form"
+          @compositionstart="handleCompositionStart"
+          @compositionupdate="handleCompositionUpdate"
+          @compositionend="handleCompositionEnd"
+          @input="handleInput"
+          @focus="handleFocus"
+          @blur="handleBlur"
+          @change="handleChange"
+          @keydown="handleKeydown"
       />
             <span
-                    v-if="isWordLimitVisible"
-                    :style="countStyle"
-                    :class="nsInput.e('count')"
+                v-if="isWordLimitVisible"
+                :style="countStyle"
+                :class="nsInput.e('count')"
             >
         {{ textLength }} / {{ attrs.maxlength }}
       </span>
@@ -153,7 +153,7 @@ import {
 import {useResizeObserver} from '@vueuse/core'
 
 // import {isNil} from 'lodash-unified'
-function isNil(value) {
+function isNil(value: any) {
     return value == null;
 }
 
@@ -164,17 +164,15 @@ function isNil(value) {
 //     View as IconView,
 // } from '@element-plus/icons-vue'
 
-//TODO：该弄这里了
-
 import {
     useFormDisabled,
     useFormItem,
     useFormItemInputId,
     useFormSize,
-} from '@element-plus/components/form'
+} from '@/components/form'
 import {
     NOOP,
-    ValidateComponentsMap,
+    // ValidateComponentsMap,
     debugWarn,
     isClient,
     isKorean,
@@ -266,7 +264,7 @@ const {wrapperRef, isFocused, handleFocus, handleBlur} = useFocusController(
     {
         afterBlur() {
             if (props.validateEvent) {
-                formItem?.validate?.('blur').catch((err) => debugWarn(err))
+                formItem?.validate?.('blur').catch((err: any) => debugWarn(err))
             }
         },
     }
@@ -274,9 +272,9 @@ const {wrapperRef, isFocused, handleFocus, handleBlur} = useFocusController(
 
 const needStatusIcon = computed(() => form?.statusIcon ?? false)
 const validateState = computed(() => formItem?.validateState || '')
-const validateIcon = computed(
-    () => validateState.value && ValidateComponentsMap[validateState.value]
-)
+// const validateIcon = computed(
+//     () => validateState.value && ValidateComponentsMap[validateState.value]
+// )
 // const passwordIcon = computed(() =>
 //     passwordVisible.value ? IconView : IconHide
 // )
@@ -498,7 +496,7 @@ watch(
     () => {
         nextTick(() => resizeTextarea())
         if (props.validateEvent) {
-            formItem?.validate?.('change').catch((err) => debugWarn(err))
+            formItem?.validate?.('change').catch((err: any) => debugWarn(err))
         }
     }
 )
