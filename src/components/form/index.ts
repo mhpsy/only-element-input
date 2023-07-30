@@ -1,9 +1,9 @@
-import { withInstall, withNoopInstall } from '@/utils'
-import Form from './src/form.vue'
-import FormItem from './src/form-item.vue'
+import {withInstall, withNoopInstall} from '@/utils'
+import Form from './src/xx-form.vue'
+import FormItem from './src/xx-form-item.vue'
 
 export const ElForm = withInstall(Form, {
-  FormItem,
+    FormItem,
 })
 export default ElForm
 export const ElFormItem = withNoopInstall(FormItem)

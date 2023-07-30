@@ -1,8 +1,8 @@
-import { componentSizes } from '@element-plus/constants'
-import { buildProps, definePropType } from '@element-plus/utils'
+import { componentSizes } from '@/constants'
+import { buildProps, definePropType } from '@/utils'
 
 import type { ExtractPropTypes } from 'vue'
-import type { Arrayable } from '@element-plus/utils'
+import type { Arrayable } from '@/utils'
 import type { FormItemRule } from './types'
 
 export const formItemValidateStates = [

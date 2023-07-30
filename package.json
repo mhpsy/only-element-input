@@ -13,6 +13,7 @@
   "dependencies": {
     "@vue/shared": "^3.3.4",
     "@vueuse/core": "^10.2.1",
+    "async-validator": "^4.2.5",
     "lodash": "^4.17.21",
     "lodash-unified": "^1.0.3",
     "pinia": "^2.1.4",

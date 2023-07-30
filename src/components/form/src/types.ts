@@ -4,8 +4,8 @@ import type {
   ValidateError,
   ValidateFieldsError,
 } from 'async-validator'
-import type { ComponentSize } from '@element-plus/constants'
-import type { Arrayable } from '@element-plus/utils'
+import type { ComponentSize } from '@/constants'
+import type { Arrayable } from '@/utils'
 import type { MaybeRef } from '@vueuse/core'
 import type {
   FormItemProp,
